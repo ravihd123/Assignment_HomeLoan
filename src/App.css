@@ -1,38 +1,73 @@
-.App {
-  text-align: center;
+@import url("https://fonts.googleapis.com/css2?family=Lato&display=swap");
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Lato", sans-serif;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.home,
+.reports,
+.products {
   display: flex;
-  flex-direction: column;
+  height: 90vh;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  font-size: 3rem;
+}
+
+.column1 {
+  float: left;
+  width: 20%;
+  /* Should be removed. Only for demonstration */
+}
+.column2 {
+  float: left;
+  width: 80%;
+  /* Should be removed. Only for demonstration */
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.navbar {
+  background-color: #060b26;
+  height: 60px;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+
+.hamIcon {
+  position: absolute;
+  right: 24px;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+h3 {
+  margin: 4%;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.buttoncls {
+  position: absolute;
+  right: 80px;
+  bottom: 50px;
+}
+
+.MuiSelect-select {
+  min-width: 150px !important;
+
+}
+
+.MuiFormControl-root{
+  margin-right: 10% !important;
+}
+
+body {
+  overflow: hidden; /* Hide scrollbars */
 }

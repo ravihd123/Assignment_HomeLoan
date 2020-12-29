@@ -1,24 +1,48 @@
-import logo from './logo.svg';
+
 import './App.css';
+import React from 'react';
+import './App.css';
+import Navbar from './components/Navbar';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { PersonalDetails } from "./pages/Personaldetails";
+import { PropertyDetails } from "./pages/PropertyDetails";
+import { FinancialDetails } from "./pages/Financialdetails";
+import { Demographics } from "./pages/Demographics";
+import { Summary } from "./pages/Summary";
+
+import * as FaIcons from 'react-icons/fa';
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+
+    <>
+      <Router>
+        <div className='navbar'>
+          <div>
+            <img src='../public.logo.png' alt="logo" width="500" height="600" />
+            <FaIcons.FaBars className='hamIcon' />
+          </div>
+        </div>
+
+        <div className="row">
+          <div className="column1" >
+            <Navbar />
+          </div>
+          <div className="column2">
+            <Switch>
+              <Route path='/personldetails' exact component={PersonalDetails} />
+              <Route path='/propertydetails' component={PropertyDetails} />
+              <Route path='/financialdetails' component={FinancialDetails} />
+              <Route path='/demographics' component={Demographics} />
+              <Route path='/summary' component={Summary} />
+            </Switch>
+          </div>
+
+        </div>
+
+      </Router>
+    </>
   );
 }
 
