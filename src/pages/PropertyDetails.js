@@ -77,8 +77,7 @@ export class PropertyDetails extends React.Component {
         }
 
 
-        if (!this.state.nameError && !this.state.percantageerror && !this.state.valueError
-            && !this.state.purperror && !this.state.typeerror) {
+        if (!this.state.nameError && !this.state.percantageerror && !this.state.valueError && !this.state.purperror && !this.state.typeerror) {
             let data = {
                 propertyname: this.state.propertvalue,
                 downpayment: this.state.downpayment,
@@ -86,8 +85,6 @@ export class PropertyDetails extends React.Component {
                 propuse: this.state.purp,
                 type: this.state.type
             }
-
-
             browserHistory.push('/financialdetails')
             window.location.reload();
 

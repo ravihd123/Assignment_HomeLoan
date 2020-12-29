@@ -20,7 +20,7 @@ function App() {
       <Router>
         <div className='navbar'>
           <div>
-            <img src='../public.logo.png' alt="logo" width="500" height="600" />
+            <img src='https://www.gstatic.com/webp/gallery/1.jpg' alt="logo" width="130" height="40" />
             <FaIcons.FaBars className='hamIcon' />
           </div>
         </div>
