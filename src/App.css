@@ -61,13 +61,17 @@ h3 {
 
 .MuiSelect-select {
   min-width: 150px !important;
-
 }
 
-.MuiFormControl-root{
+.MuiFormControl-root {
   margin-right: 10% !important;
 }
 
 body {
   overflow: hidden; /* Hide scrollbars */
+}
+
+.error {
+  color: red;
+  font-size: 12px;
 }

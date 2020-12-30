@@ -38,14 +38,17 @@ export class PropertyDetails extends React.Component {
 
     propertyValue = (e) => {
         this.setState({ propertvalue: e.target.value });
+        this.setState({ nameError: false })
     }
 
     downpaymentvalue = (e) => {
         this.setState({ downpayment: e.target.value });
+        this.setState({ valueError: false })
     }
 
     downpaymentPerc = (e) => {
-        this.setState({ percentage: e.target.value })
+        this.setState({ percentage: e.target.value });
+        this.setState({ percantageerror: false })
     }
 
     purpose = (e) => {
@@ -58,22 +61,28 @@ export class PropertyDetails extends React.Component {
         this.setState({ typeerror: false })
 
     }
-    submit = () => {
+    submit = async () => {
         if ((parseInt(this.state.propertvalue) < parseInt(this.state.downpayment)) || parseInt(this.state.downpayment) < 0) {
-            this.setState({ valueError: true });
+            await this.setState({ valueError: true });
         } else if (parseInt(this.state.percentage) < 100 && parseInt(this.state.percentage) >= 0) {
-            this.setState({ valueError: false });
+            await this.setState({ valueError: false });
             this.setState({ percantageerror: false })
         } else {
-            this.setState({ valueError: false });
-            this.setState({ percantageerror: true });
+            await this.setState({ valueError: false });
+            await this.setState({ percantageerror: true });
+        }
+        if (this.state.propertvalue.length == 0) {
+            await this.setState({ nameError: true })
+        }
+        if (this.state.downpayment.length == 0) {
+            await this.setState({ valueError: true })
         }
 
         if (this.state.purp.length == 0) {
-            this.setState({ purperror: true })
+            await this.setState({ purperror: true })
         }
         if (this.state.type.length == 0) {
-            this.setState({ typeerror: true })
+            await this.setState({ typeerror: true })
         }
 
 
@@ -104,6 +113,7 @@ export class PropertyDetails extends React.Component {
                             <FormControl >
                                 <InputLabel htmlFor="demo-customized-textbox">Property value</InputLabel>
                                 <Input type="number" error={this.state.nameError} onChange={this.propertyValue} id="demo-customized-textbox" />
+                                {this.state.nameError && <span className='error'>This field required </span>}
                             </FormControl>
                         </Grid>
 
@@ -112,10 +122,12 @@ export class PropertyDetails extends React.Component {
                             <FormControl >
                                 <InputLabel htmlFor="demo-customized-textbox">Downpayment in $</InputLabel>
                                 <Input type="number" error={this.state.valueError} onChange={this.downpaymentvalue} id="demo-customized-textbox" />
+                                {this.state.valueError && <span className='error'>should less than property value</span>}
                             </FormControl>
                             <FormControl >
                                 <InputLabel htmlFor="demo-customized-textbox">Downpayment in %</InputLabel>
                                 <Input type="number" error={this.state.percantageerror} onChange={this.downpaymentPerc} id="demo-customized-textbox" />
+                                {this.state.percantageerror && <span className='error'>should less than 100</span>}
                             </FormControl>
                         </Grid>
                         <Grid item xs={12}>
@@ -131,6 +143,7 @@ export class PropertyDetails extends React.Component {
                                     <MenuItem value={dropdownValues.purpose}>{dropdownValues.purpose}</MenuItem>
 
                                 </Select>
+                                {this.state.purperror && <span className='error'>This field required </span>}
                             </FormControl>
                         </Grid>
                         <Grid item xs={12}>
@@ -149,6 +162,7 @@ export class PropertyDetails extends React.Component {
                                     <MenuItem value={dropdownValues.house_multi}>{dropdownValues.house_multi}</MenuItem>
                                     <MenuItem value={dropdownValues.House_condominium}>{dropdownValues.House_condominium}</MenuItem>
                                 </Select>
+                                {this.state.typeerror && <span className='error'>This field required </span>}
                             </FormControl>
                         </Grid>
                     </Grid>
